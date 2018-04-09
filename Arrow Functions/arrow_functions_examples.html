@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Arrow functions examples</title>
+</head>
+<body>
+<script>
+
+    const race = '100m Dash';
+    const winners = ['Hunter Gath', 'Singa Song', 'Imda Bos'];
+
+    // An Implicit Return with an Object Literal:
+    /* You can put parentheses around the curly brackets so that you can implicitly return an object literal. 
+    The JS engine is now not confusing the curly brackets of the object literal with those of the return block of a function */
+    const win = winners.map((winner, i) => ({name: winner, race, place: i + 1}));  
+        // just declaring race gives you race: race because the property name is the same as the 'race' variable
+        // the + 1 is so to overwrite the 0 based indexing of 1st place in the race
+
+    const ages = [23,62,45,234,2,62,234,62,34];
+    const old = ages.filter(age => age >= 60);
+    console.log(old);
+
+</script>
+</body>
+</html>
