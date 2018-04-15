@@ -46,10 +46,44 @@
         transform:translateX(0%);
         }
     </style>
+
+    <div class="wrap">
+        <div class="box">
+        <h2>Wes Bos</h2>
+        <p class="social">@wesbos</p>
+        </div>
+    </div>
+
 <script>
+/* When using an ARROW function, this is not rebound to that function. Instead it is just inherited 
+from what the parent scope is. In the below case, if an arrow function was used in the addEventListener, 
+this would be Window.
 
-    // When using an arrow function, this is not bound to that function. Instead it represents the global object?
+So it is best to use a regular function so that this remains bound to the box. */
 
+// The below involves an example of where you wouldn't want to use an arrow function
+
+    const box = document.querySelector('.box');
+    box.addEventListener('click', function() {
+      console.log('this', this);
+      let first = 'opening';
+      let second = 'open';
+      if(this.classList.contains(first)) {
+        [first, second] = [second, first]; // Destructuring: switches the values of the variables. Now first = 'open', second ='opening'
+      }
+      this.classList.toggle(first); // if 'opening' is set, remove it, otherwise add it
+      setTimeout(() => {
+        this.classList.toggle(second);
+      }, 500);
+    });
+
+//  line 68: to figure out what 'this' is, you look to the LEFT of the thing that got called (addEventListener) which is the box
+
+/*  However, when it comes to the setTimeout function, it is best to use an arrow function as this doesn't get rebound...
+    Instead it inherits the value of 'this' from the parent scope (which was box). A regular function used in the setTimeout
+    would equate this with the Window object because the function is not bound to anything like when the previous 
+    function was bound to the box.    
+*/
 
 </script>
 </body>

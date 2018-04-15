@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Default Function Arguments</title>
+</head>
+<body>
+<script>
+
+// The old way of declaring default arguments:
+    function calculateBill(total, tax, tip) {
+        if (tax === undefined) {
+            tax = 0.13;
+        }
+        // or...
+        tip = tip || 0.15 // terse but hard to read code
+
+        return total + (total * tax) + (total * tip);
+    }
+
+
+// The new way:
+
+    function calculateBill2(total, tax = 0.13, tip = 0.15) {
+        return total + (total * tax) + (total * tip);
+    }
+
+    const totalBill = calculateBill(100);
+    console.log(totalBill);
+
+    /* The tax will never change, but the tip amount may change. Because of the order of the arguments, 
+    you would explicitly pass undefined as the default argument and then alter the tip amount. This is because
+    the default argument code tax = 0.13 is actually the same as tax = tax || 0.13, 
+    i.e. it's checking if someone is passing undefined against the default value of 0.13
+    */  
+    const totalBillBetterTip = calculateBill(100, undefined, 0.25)
+    console.log(totalBillBetterTip);
+    
+
+
+</script>
+</body>
+</html>
