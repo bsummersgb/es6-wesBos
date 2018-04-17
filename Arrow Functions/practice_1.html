@@ -39,12 +39,19 @@
 
 
     const listOfVideos = Array.from(document.querySelectorAll("li"));
-    console.log(listOfVideos);
 
     
-    const flexboxVideos = listOfVideos.filter(item => item.textContent.toLowerCase().includes('flexbox'));
+    const flexboxVideos = listOfVideos
+        .filter(item => item.textContent.toLowerCase().includes('flexbox'))
+        .map(item => item.dataset.time)
+        .map((time) => {
+            const mins = time.split(':');
+            return mins;
+        })
+        .reduce((minsSecs, currentValue) => {
+            return Number.parseFloat(minsSecs[0]) * 60 + Number.parseFloat(minsSecs[1]) + currentValue;
+        }, 0);
 
-    flexboxVideos.map()
 
     console.log(flexboxVideos);
 
