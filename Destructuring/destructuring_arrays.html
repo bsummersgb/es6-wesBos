@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Destructuring Arrays</title>
+</head>
+<body>
+<script>
+
+
+/* When you pull froman Object to destructure, you use the curly bracket syntax {} (remember, it's not a block)
+   When You pull from an Array to destructure, you use the square bracket syntax [] */
+
+// Destructuring a simple array
+const details = ['Bryan', 13, 'bsummers.me']
+const [name, id, website] = details;
+console.log(name, id, website);
+
+// Destructuring a comma-separated string
+const data = 'Football,Sports,3pm,27'
+const [sport, category, time, iD] = data.split(',');
+console.log(sport, category, time, iD);
+
+// The Rest operator use-case: I want the know the Captain, Vice-Captain, and the "rest" of the team
+
+const team = ['Carrick', 'Valencia', 'Pogba', 'De Gea', 'Lukaku', 'Sanchez', 'Lingard', 'Rashford'];
+const [captain, viceCaptain, ...players] = team;
+
+// ...players gives me the "REST" of the team
+
+
+
+</script>
+</body>
+</html>

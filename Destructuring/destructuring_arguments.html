@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Destructuring Obejcts</title>
+</head>
+<body>
+<script>
+    // Destructuring allows you to extract data from, AARAYS, OBJECTS, MAPS, and SETS into their own variable.
+
+    const person = {
+        first: 'Bryan',
+        last: 'Summers',
+        country: 'Aust',
+        city: 'Perth'
+    };
+
+    // const first = person.first;
+    // const last = person.last;
+
+    // Or, with destructuring:
+
+    const { first, last } = person;
+
+    console.log(first, last);
+
+    /*
+        - The {} is not a block; in this case it is the destructuring syntax
+        - The code above gives you a variable called 'first', a 'variable' called last, and takes the values from
+        the person object
+    */
+
+    // You can use destructuring with deeper nested data too:
+
+    const person2 = {
+        first: 'Bryan',
+        last: 'Summers',
+        location: {
+            country: 'Aust',
+            city: 'Perth'
+        },
+        links: {
+            social: {
+                twitter: 'twitter.com/bryan',
+                facebook: 'facebook.com/bryan'
+            }
+        }
+    };
+
+    const { country, city } = person2.location; // creates a variable for country and one for city
+
+    console.log(country, city);
+
+
+    /* Sometimes the data from an API comes back with some odd property names, which you might not want to use.
+       So you can RENAME the properties as you destructure them:
+    */
+
+    const { twitter: tweetSphere, facebook: fagBook } = person2.links.social;
+
+    console.log(tweetSphere, fagBook);
+
+
+</script>
+</body>
+</html>

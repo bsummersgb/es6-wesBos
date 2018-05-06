@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Swapping Variables with Destructuring</title>
+</head>
+<body>
+<script>
+
+// Tag-team wrestling
+
+let inRing = 'Hulk Hogan';
+let onSide = 'The Rock';
+
+
+console.log(inRing, onSide); // before
+
+// Swap the value of the variables around 
+[inRing, onSide] = [onSide, inRing];
+
+// ... what this actually does is create an array with onSide and inRing and immediately destrcuture them
+// into the oppositi variables
+
+console.log(inRing, onSide); // after
+
+</script>
+</body>
+</html>

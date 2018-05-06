@@ -37,24 +37,44 @@
   // reduce to get total
   // 🔥 This can also be done in a single .reduce(), but we're practicing arrow functions here, so chain them!
 
-
-    const listOfVideos = Array.from(document.querySelectorAll("li"));
+// My solution:
+    // const listOfVideos = Array.from(document.querySelectorAll("li"));
 
     
-    const flexboxVideos = listOfVideos
-        .filter(item => item.textContent.toLowerCase().includes('flexbox'))
-        .map(item => item.dataset.time)
-        .map((time) => {
-            const mins = time.split(':');
-            return mins;
-        })
-        .reduce((minsSecs, currentValue) => {
-            return Number.parseFloat(minsSecs[0]) * 60 + Number.parseFloat(minsSecs[1]) + currentValue;
-        }, 0);
+    // const flexboxVideos = listOfVideos
+    //     .filter(item => item.textContent.toLowerCase().includes('flexbox'))
+    //     .map(item => item.dataset.time)
+    //     .map((time) => {
+    //         const mins = time.split(':');
+    //         return mins;
+    //     })
+    //     .reduce((totalminsSecs, currentValue) => {
+    //         return Number.parseFloat(currentValue[0]) * 60 + Number.parseFloat(currentValue[1]) + totalminsSecs;
+    //     }, 0);
 
 
-    console.log(flexboxVideos);
+    // console.log(flexboxVideos);
 
+// Wes' Solution: (pretty much the same :) )
+
+// Select all the list items on the page and convert to array
+const items = Array.from(document.querySelectorAll('[data-time]'));
+
+// Filter for only the elements that contain the word 'flexbox'
+const filtered = items
+    .filter(item => item.textContent.includes('Flexbox'))
+    // map down to a list of time strings
+    .map(item => item.dataset.time)
+    // map to an array of seconds
+    .map(timeCode => {
+        const parts = timeCode.split(':').map(part => parseFloat(part));
+        return (parts[0] * 60) + parts[1];
+    })
+    // reduce to get total
+    // 🔥 This can also be done in a single .reduce(), but we're practicing arrow functions here, so chain them!
+    .reduce((runningTotal, seconds) => runningTotal + seconds , 0)
+
+console.log(filtered);
 
 </script>
 </body>
